@@ -38,8 +38,8 @@ while essais != 0 and verif_victoire(lettres_trouvees)==False:
     lettre = input("Donnez une lettre : ")
     lettre=lettre.upper() #on repasse en majuscule la lettre entrée pour éviter les soucis de comparaison
     
-    
-    if lettre_joue(lettre,lettres_donnees)==False:        
+    #vérification que la lettre entrée par l'utilisateur n'est pas déjà utilisé
+    if lettre_joue(lettre,lettres_donnees)==False:
         lettres_trouvees,essais,valid_lettre=verif_lettre(lettre,mots,lettres_trouvees,essais)
 
         if valid_lettre==True:
