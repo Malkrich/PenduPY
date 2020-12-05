@@ -24,7 +24,7 @@ def sort_fichier(nom_fichier_brut,nom_fichier_sorted):
     
     mots_liste.sort()
     mots_liste.sort(key=len) #trie des mots par ordre de taille
-    print(mots_liste)
+    #print(mots_liste)
     
     #écriture dans un nouveau fichier :
     for i in range(len(mots_liste)):

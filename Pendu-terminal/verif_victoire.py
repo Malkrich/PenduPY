@@ -14,7 +14,7 @@ def verif_victoire(lettres_trouvees):
     
     #On somme tous les termes du tableau
     for i in range(len(lettres_trouvees)):
-        somme+=lettres_trouvees[i]
+        somme+=lettres_trouvees[i] #incrémente 1 pour chaque lettre trouvée
            
     #On vérifie que cette somme est égale à la longueur
     #Si ce cas est vrai, dans ce cas cela veut dire que tous les termes sont à 1
