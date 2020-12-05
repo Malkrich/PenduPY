@@ -16,7 +16,7 @@ from mots_cache import mots_cache #permet d'afficher sur la console le mots avec
 from verif_lettre import verif_lettre #permet de vérifier si la lettre entrée est compris dans le mot ou non et modifie le nombre d'essais restants
 from verif_victoire import verif_victoire #permet de vérifier si le mot joué a été trouvé ou non
 from lettre_joue import lettre_joue #vérifie si une lettre a déjà été trouvé ou non
-from switch_score import switch_score #permet de modifier le score du joueur
+from switch_score import switch_score #permet de modifier le score du joueur lorsqu'il gagne
 from maj_fichiertxt import sort_fichier #permet de mettre à jour le fichiers de mots dans l'ordre de taille puis par ordre alphabétique
 
 reponse = "O" #réponse pour recommencer
@@ -30,6 +30,7 @@ while reponse == "O" and action != "Q":
 
     if action == "M":
         sort_fichier("mots.txt","mots_sort.txt")
+        print("Le fichier de mot a bien été mis à jour !\n")
     
     if action == "J":
         """NOTES, détails du tableau de lettre :
@@ -37,7 +38,7 @@ while reponse == "O" and action != "Q":
         Pour un 1 : la lettre est trouvée
         On définie le mot cache en fonction du tableau de lettres trouvées"""
         
-        mots,lettres_trouvees = choix_mots("mots.txt")
+        mots,lettres_trouvees = choix_mots("mots_sort.txt")
         essais=8
         mots_affiche = mots_cache(mots,lettres_trouvees)
         lettres_donnees=[] #liste des lettres qui ont déjà été tentées par l'utilisateur
@@ -73,15 +74,13 @@ while reponse == "O" and action != "Q":
 
         print("FIN DU JEUX")
 
-    #On part du principe que le score est le nombre d'essais non utilisés : 
-    #Un score de 8 veut dire que l'on a utilisé aucuns essais
-        score,new_score=switch_score(essais,score) #on change de score si il est supérieur
-
+    #Le score enregistre le nombre de mots devinés
+    #On enregistre ce score dans un fichier texte pour le garder en mémoire
 
         if verif_victoire(lettres_trouvees) == True:
+            new_score=switch_score() #si il y a victoire, on incrémente de 1 le score
             print("Bravo ! vous avez gagné !")
-            if new_score == True:
-                print("NOUVEAU RECORD ! Il est de ",score," essais non utilisés")
+            print("Vous avez deviné ",new_score," mots !")
         elif essais == 0:
             print("Malhereusement, malgrés vos essais acharnés vous n'avez pas pu trouver le mots")
             print("Le mot était en fait : ",mots)

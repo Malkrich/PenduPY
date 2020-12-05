@@ -21,3 +21,7 @@ clavier
 disque
 musique
 composition
+valeur
+mots
+école
+clou

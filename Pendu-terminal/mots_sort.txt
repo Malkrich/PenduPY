@@ -1,9 +1,12 @@
 feu
+clou
+mots
 arbre
 atome
 homme
 ponts
 shiva
+école
 action
 casque
 clique
@@ -11,6 +14,7 @@ disque
 maison
 manger
 papier
+valeur
 clavier
 couteau
 musique
