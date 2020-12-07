@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Mon Nov 30 14:25:29 2020
-
-@author: lemarie
+Cette fonction permet de choisir un mots au hasard dans la liste de mots
+du fichier texte.
 """
 
 #Ce fichier prend en entrée le fichier de mot
@@ -33,4 +32,4 @@ def choix_mots(fichier_mots):
         lettres.append(0)
     
     mots.close()
-    return  mots_retour,lettres#on retourne le mot en majuscule
+    return  mots_retour,lettres #on retourne le mot en majuscule
