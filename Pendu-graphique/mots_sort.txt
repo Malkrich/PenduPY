@@ -1,5 +1,3 @@
-feu
-clou
 mots
 arbre
 atome

@@ -12,7 +12,7 @@ from verif_victoire import verif_victoire #permet de vérifier si le mot joué a
 from lettre_joue import lettre_joue #vérifie si une lettre a déjà été trouvé ou non
 from switch_score import switch_score #permet de modifier le score du joueur lorsqu'il gagne
 from maj_fichiertxt import sort_fichier #permet de mettre à jour le fichiers de mots dans l'ordre de taille puis par ordre alphabétique
-from main_interface import jouer, recommencer,victoire,defaite #fonction jouer et recommencer des boutons
+from main_interface import jouer, recommencer #fonction jouer et recommencer des boutons
 from change_image import change_image
 from tkinter import Tk, Label, Entry, Canvas, PhotoImage, Button, Menu, StringVar, IntVar
 
@@ -49,11 +49,9 @@ def macro_jouer(lettre):
         print(essais.get())
     
     if verif_victoire(table_lettres):
-        victoire()
         txt_lettre=Label(fen_jeux, text="Vous avez gagné !")
         txt_lettre.grid(row=2, column=1, columnspan=2)
     elif essais.get()==0:
-        defaite()
         txt_lettre=Label(fen_jeux, text="Perdu...")
         txt_lettre.grid(row=2, column=1, columnspan=2)
 
@@ -79,6 +77,7 @@ fen_jeux = Tk()
 menubar=Menu(fen_jeux)
 menu_action= Menu(menubar,tearoff=0)
 menu_action.add_command(label="Quitter",command=fen_jeux.destroy)
+menu_action.add_command(label="Mettre à jour les mots",command=lambda:sort_fichier('mots.txt','mots_sort.txt'))
 menubar.add_cascade(label="Action",menu=menu_action)
 
 #Ajout wigget interface
