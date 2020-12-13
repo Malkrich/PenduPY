@@ -15,18 +15,27 @@ from main_interface import jouer, recommencer
 from tkinter import Tk, Label, Entry, Canvas, PhotoImage, Button, Menu, StringVar, IntVar
 
 def macro_recommencer():
-    global mots, table_lettres
-    mots,table_lettres = recommencer(mots_inter)
+    global mots,table_lettres,lettre_jeu,essais
+    lettre_jeu=[]
+    essais.set(8)
+    mots,table_lettres = recommencer(mots_inter) #rechoisie une mots parmis la table de mots
 
 def macro_jouer(lettre):
-    global mots,table_lettres,mots_inter,essais
-    essais = jouer(lettre,mots,table_lettres,essais,mots_inter)
-    print(essais.get())
+    global mots,table_lettres,mots_inter,essais,lettre_jeu
+    if lettre_joue(lettre,lettre_jeu) == False:
+        essais = jouer(lettre,mots,table_lettres,essais,mots_inter)
+        print(essais.get())
+    else:
+        print("Lettre déjà joué")
+        print(essais.get())
+    
+    lettre_jeu.append(lettre)
 
 
 sort_fichier('mots.txt','mots_sort.txt')
 mots,table_lettres=choix_mots('mots_sort.txt')
 mots_jeux=mots_cache(mots,table_lettres)
+lettre_jeu=[] #table des lettres jouées durant une partie
 print("Mots joué :",mots)
 
 #Création de la fenêtre
