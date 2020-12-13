@@ -4,12 +4,11 @@ ponts
 shiva
 maison
 décembre
-satellite
+satélite
 dinosaure
 tartine
 atome
 ratatouille
-feu
 action
 casque
 manger
@@ -24,4 +23,3 @@ composition
 valeur
 mots
 école
-clou

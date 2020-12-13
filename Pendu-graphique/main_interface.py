@@ -1,6 +1,5 @@
 """
-Ce programme repertorie toutes les fonctions des actions que l'on peut effectuer
-sur l'interface
+Ce programme permet de d'executer les fonction jouer et recommencer, fonction de base de
 """
 
 #Import des fonctions
@@ -11,9 +10,8 @@ from verif_victoire import verif_victoire #permet de vérifier si le mot joué a
 from lettre_joue import lettre_joue #vérifie si une lettre a déjà été trouvé ou non
 from switch_score import switch_score #permet de modifier le score du joueur lorsqu'il gagne
 from maj_fichiertxt import sort_fichier #permet de mettre à jour le fichiers de mots dans l'ordre de taille puis par ordre alphabétique
-from tkinter import Tk, Label, Entry, Canvas, PhotoImage, Button, Menu, StringVar, IntVar
 
-def jouer(lettre,mots,table_lettres,essais,mots_inter):
+def jouer(lettre,mots,table_lettres,essais,mots_inter,lettre_jeu):
     lettre=lettre.upper()
     table_lettre,essais_int,valid_lettre=verif_lettre(lettre,mots,table_lettres,essais.get())
     essais.set(essais_int)
@@ -22,7 +20,9 @@ def jouer(lettre,mots,table_lettres,essais,mots_inter):
         mots_jeux=mots_cache(mots,table_lettres)
         mots_inter.set(mots_jeux)
     
-    return essais
+    lettre_jeu.append(lettre.upper())
+    
+    return essais,lettre_jeu
 
 def recommencer(mots_inter):
     mots, table_lettres=choix_mots('mots_sort.txt')
@@ -30,10 +30,3 @@ def recommencer(mots_inter):
     print("Mots joué :",mots)
     mots_inter.set(mots_jeux)
     return mots, table_lettres
-    
-def victoire():
-    print("Win !")
-    
-
-def defaite():
-    print("raté...")
