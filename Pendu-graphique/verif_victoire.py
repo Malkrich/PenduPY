@@ -19,6 +19,6 @@ def verif_victoire(lettres_trouvees):
     #On vérifie que cette somme est égale à la longueur
     #Si ce cas est vrai, dans ce cas cela veut dire que tous les termes sont à 1
     if somme == len(lettres_trouvees):
-        return True
+        return True #on retourne vrai en cas de victoire
     else:
-        return False
+        return False #on retourne faux sinon

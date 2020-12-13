@@ -30,3 +30,10 @@ def recommencer(mots_inter):
     print("Mots joué :",mots)
     mots_inter.set(mots_jeux)
     return mots, table_lettres
+    
+def victoire():
+    print("Win !")
+    
+
+def defaite():
+    print("raté...")
