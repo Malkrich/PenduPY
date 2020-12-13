@@ -44,6 +44,7 @@ ou d'une défaite (le nombre d'essais est à 0)
 #Cette fonction prend la lettre entrée par l'utilisateur en entrée et n'a pas de sorties
 def macro_jouer(lettre):
     global mots,table_lettres,mots_inter,essais,lettre_jeu,table_images,fen_jeux,img_file,val_score
+    global score_inter
     
     if lettre_joue(lettre.upper(),lettre_jeu) == False:
         essais,lettre_jeu = jouer(lettre,mots,table_lettres,essais,mots_inter,lettre_jeu)
@@ -69,6 +70,7 @@ def macro_jouer(lettre):
         txt_lettre=Label(fen_jeux, text="Vous avez gagné !")
         txt_lettre.grid(row=2, column=1, columnspan=2)
         val_score = switch_score()
+        score_inter.set("Score : "+str(val_score))
     elif essais.get()==0:
         #ajout d'un label "Perdu..." lorsque l'utilisateur a perdu
         txt_lettre=Label(fen_jeux, text="Perdu...")
@@ -108,13 +110,13 @@ menubar=Menu(fen_jeux)
 menu_action= Menu(menubar,tearoff=0)
 menu_action.add_command(label="Quitter",command=fen_jeux.destroy)
 menu_action.add_command(label="Mettre à jour les mots",command=lambda:sort_fichier('mots.txt','mots_sort.txt'))
-menubar.add_cascade(label="Action",menu=menu_action)
+menubar.add_cascade(label="Menu",menu=menu_action)
 
 #Wigget interface
 mots_inter=StringVar()
 mots_inter.set(mots_jeux)
 score_inter=IntVar()
-score_inter.set(val_score)
+score_inter.set("Score : "+str(val_score))
 essais = IntVar()
 essais.set(8)
 lbl_mots=Label(fen_jeux, textvariable=mots_inter)
@@ -124,7 +126,7 @@ bouton_recommencer = Button(fen_jeux, text="Recommencer", fg='black', command=ma
 can = Canvas(fen_jeux, width=300, height=300, bg='white')
 Image_pendu = PhotoImage(file=img_file)
 can.create_image(150, 150, image=Image_pendu)
-can.grid(row=1, rowspan=3, column=3)
+can.grid(row=1, rowspan=4, column=3)
 lbl_score=Label(fen_jeux, textvariable=score_inter)
 
 #Mise en forme de l'interface à l'aide d'un grid
@@ -134,6 +136,7 @@ lbl_mots.grid(row=1, column=1, columnspan=2)
 txt_lettre.grid(row=2, column=1, columnspan=2)
 bouton_jouer.grid(row=3, column=1)
 bouton_recommencer.grid(row=3, column=2)
+lbl_score.grid(row=4,column=1,columnspan=2)
 
 #lancement de la fenêtre
 fen_jeux.mainloop()
