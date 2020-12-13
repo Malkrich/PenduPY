@@ -18,7 +18,6 @@ def verif_lettre(lettre,mots,lettres_trouvees,essais):
             lettres_trouvees[i]=1
             valid_lettre=True
 
-    print(essais)
     if valid_lettre == False:
         essais-=1
     

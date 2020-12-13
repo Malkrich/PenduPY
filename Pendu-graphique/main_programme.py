@@ -20,7 +20,8 @@ def macro_recommencer():
 
 def macro_jouer(lettre):
     global mots,table_lettres,mots_inter,essais
-    jouer(lettre,mots,table_lettres,essais,mots_inter)
+    essais = jouer(lettre,mots,table_lettres,essais,mots_inter)
+    print(essais.get())
 
 
 sort_fichier('mots.txt','mots_sort.txt')

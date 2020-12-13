@@ -14,7 +14,6 @@ from maj_fichiertxt import sort_fichier #permet de mettre à jour le fichiers de
 from tkinter import Tk, Label, Entry, Canvas, PhotoImage, Button, Menu, StringVar, IntVar
 
 def jouer(lettre,mots,table_lettres,essais,mots_inter):
-    print("Jouer")
     lettre=lettre.upper()
     table_lettre,essais_int,valid_lettre=verif_lettre(lettre,mots,table_lettres,essais.get())
     essais.set(essais_int)
@@ -22,8 +21,8 @@ def jouer(lettre,mots,table_lettres,essais,mots_inter):
     if valid_lettre:
         mots_jeux=mots_cache(mots,table_lettres)
         mots_inter.set(mots_jeux)
-    else:
-        print(essais.get())
+    
+    return essais
 
 def recommencer(mots_inter):
     mots, table_lettres=choix_mots('mots_sort.txt')
