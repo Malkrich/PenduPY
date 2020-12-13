@@ -11,16 +11,19 @@ from verif_victoire import verif_victoire #permet de vérifier si le mot joué a
 from lettre_joue import lettre_joue #vérifie si une lettre a déjà été trouvé ou non
 from switch_score import switch_score #permet de modifier le score du joueur lorsqu'il gagne
 from maj_fichiertxt import sort_fichier #permet de mettre à jour le fichiers de mots dans l'ordre de taille puis par ordre alphabétique
-from tkinter import Tk, Label, Entry, Canvas, PhotoImage, Button, Menu, StringVar
+from tkinter import Tk, Label, Entry, Canvas, PhotoImage, Button, Menu, StringVar, IntVar
 
 def jouer(lettre,mots,table_lettres,essais,mots_inter):
     print("Jouer")
     lettre=lettre.upper()
-    table_lettre,essais,valid_lettre=verif_lettre(lettre,mots,table_lettres,essais)
+    table_lettre,essais_int,valid_lettre=verif_lettre(lettre,mots,table_lettres,essais.get())
+    essais.set(essais_int)
     
-    if valid_lettre == True:
+    if valid_lettre:
         mots_jeux=mots_cache(mots,table_lettres)
         mots_inter.set(mots_jeux)
+    else:
+        print(essais.get())
 
 def recommencer(mots_inter):
     mots, table_lettres=choix_mots('mots_sort.txt')

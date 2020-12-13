@@ -18,6 +18,11 @@ def macro_recommencer():
     global mots, table_lettres
     mots,table_lettres = recommencer(mots_inter)
 
+def macro_jouer(lettre):
+    global mots,table_lettres,mots_inter,essais
+    jouer(lettre,mots,table_lettres,essais,mots_inter)
+
+
 sort_fichier('mots.txt','mots_sort.txt')
 mots,table_lettres=choix_mots('mots_sort.txt')
 mots_jeux=mots_cache(mots,table_lettres)
@@ -35,11 +40,11 @@ menubar.add_cascade(label="Action",menu=menu_action)
 #Ajout wigget interface
 mots_inter=StringVar()
 mots_inter.set(mots_jeux)
-essais=IntVar()
+essais = IntVar()
 essais.set(8)
 lbl_mots=Label(fen_jeux, textvariable=mots_inter)
 txt_lettre=Entry(fen_jeux)
-bouton_jouer = Button(fen_jeux, text="Proposer", fg='black', command=lambda:jouer(txt_lettre.get(),mots,table_lettres,essais,mots_inter))
+bouton_jouer = Button(fen_jeux, text="Proposer", fg='black', command=lambda:macro_jouer(txt_lettre.get()))
 bouton_recommencer = Button(fen_jeux, text="Recommencer", fg='black', command=macro_recommencer)
 can = Canvas(fen_jeux, width=300, height=300, bg='white')
 Image_pendu = PhotoImage(file='images/bonhomme8.gif')
